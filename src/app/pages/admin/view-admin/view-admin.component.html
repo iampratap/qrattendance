@@ -1,0 +1,11 @@
+<div *ngIf="admin">
+  <label for="img">
+    <img [src]="admin.img" alt="admin image" class="img-fluid" width="100">
+  </label><br>
+  <label for="username">Username</label> : {{admin.username}} <br>
+  <label for="role">Role</label> : {{admin.role}} <br>
+  <label for="fullname">Full Name</label> : {{admin.fullname}} <br>
+  <label for="mobile">Mobile</label> : {{admin.mobile}} <br>
+  <label for="email">Email</label> : {{admin.email}} <br>
+  <label for="address">Address</label> : {{admin.address}}
+</div>

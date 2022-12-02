@@ -1,0 +1,12 @@
+<ngx-scanner-qrcode #action="scanner"
+(event)="showData($event)"
+></ngx-scanner-qrcode>
+
+<!-- data  -->
+<p class="data">{{ action.data | async }}</p>
+
+<!-- Loading -->
+<p *ngIf="action.isLoading">⌛ Loading...</p>
+
+<!-- start -->
+<button (click)="action.start()">{{action.isStart ? 'Stop' : 'Start'}}</button>

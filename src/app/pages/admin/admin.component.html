@@ -1,0 +1,120 @@
+<div class="container">
+  <h2>Admins
+    <button type="button" style="float: right" class="btn btn-sm btn-outline-primary" data-toggle="modal"
+      data-target="#addAdminModel"> <i class="fa fa-plus"></i> Add Admin</button>
+  </h2>
+
+  <div class="modal fade" id="addAdminModel">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Add New Admin</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form [formGroup]="adminForm" (submit)="addAdmin()">
+          <div class="modal-body">
+            <!-- role, username, password, fullname, mobile, email, address, img -->
+            <div class="form-group">
+              <label for="role">Role</label>
+              <select class="form-control" id="role" name="role" formControlName="role">
+                <option value="admin">Admin</option>
+                <option value="subadmin">Sub Admin</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" class="form-control" id="username" name="username" formControlName="username"
+                placeholder="Enter Username">
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password" name="password" formControlName="password"
+                placeholder="Enter Password">
+            </div>
+            <div class="form-group">
+              <label for="fullname">Full Name</label>
+              <input type="text" class="form-control" id="fullname" name="fullname" formControlName="fullname"
+                placeholder="Enter Full Name">
+            </div>
+            <div class="form-group">
+              <label for="mobile">Mobile</label>
+              <input type="text" class="form-control" id="mobile" name="mobile" formControlName="mobile"
+                placeholder="Enter Mobile">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" name="email" formControlName="email"
+                placeholder="Enter Email">
+            </div>
+            <div class="form-group">
+              <label for="address">Address</label>
+              <textarea name="" id="" cols="30" rows="10" class="form-control" id="address" name="address"
+                formControlName="address" placeholder="Enter Address"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="img">Image Url</label>
+              <input type="text" class="form-control" id="img" name="img" formControlName="img">
+            </div>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Add</button>
+          </div>
+        </form>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Full name</th>
+          <th scope="col">Username</th>
+          <th scope="col">Role</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let admin of admins">
+          <td scope="row">{{admin.fullname}}</td>
+          <td scope="row">{{admin.username}}</td>
+          <td scope="row">{{admin.role}}</td>
+          <td scope="row">
+            <button class="btn btn-outline-success" data-toggle="modal" data-target="#viewAdmin"
+              (click)="selectedAdmin = admin">View</button>
+            <button class="btn btn-outline-warning">Edit</button>
+            <button class="btn btn-outline-danger" (click)="deleteAdmin(admin.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="modal fade" id="viewAdmin">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">View Admin</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <app-view-admin [admin]="selectedAdmin"></app-view-admin>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+
+
+</div>
