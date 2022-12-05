@@ -69,6 +69,98 @@
     <!-- /.modal-dialog -->
   </div>
 
+  <div class="modal fade" id="editAdmin">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Admin</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form [formGroup]="editadminForm" (submit)="updateAdmin()">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="role">Role</label>
+              <select class="form-control" id="role" name="role" formControlName="role">
+                <option value="admin">Admin</option>
+                <option value="subadmin">Sub Admin</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="fullname">Full Name</label>
+              <input type="text" class="form-control" id="fullname" name="fullname" formControlName="fullname"
+                placeholder="Enter Full Name">
+            </div>
+            <div class="form-group">
+              <label for="mobile">Mobile</label>
+              <input type="text" class="form-control" id="mobile" name="mobile" formControlName="mobile"
+                placeholder="Enter Mobile">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" name="email" formControlName="email"
+                placeholder="Enter Email">
+            </div>
+            <div class="form-group">
+              <label for="address">Address</label>
+              <textarea name="" id="" cols="30" rows="10" class="form-control" id="address" name="address"
+                formControlName="address" placeholder="Enter Address"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="img">Image Url</label>
+              <input type="text" class="form-control" id="img" name="img" formControlName="img">
+            </div>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Update</button>
+          </div>
+        </form>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+
+  <div class="modal fade" id="passwordModel">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Change Password</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form [formGroup]="passwordForm" (submit)="updatePassword()">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="fullname">Old Password</label>
+              <input type="text" class="form-control" id="fullname" name="fullname" formControlName="old_password"
+                placeholder="Enter Old password">
+            </div>
+            <div class="form-group">
+              <label for="fullname">New Password</label>
+              <input type="text" class="form-control" id="fullname" name="fullname" formControlName="new_password"
+                placeholder="Enter new Password">
+            </div>
+            <div class="form-group">
+              <label for="fullname">Confirm new Password</label>
+              <input type="text" class="form-control" id="fullname" name="fullname" formControlName="confirm_password"
+                placeholder="Confirm Password">
+            </div>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Update</button>
+          </div>
+        </form>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+
   <div class="table-responsive">
     <table class="table">
       <thead>
@@ -80,15 +172,18 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let admin of admins">
+        <tr *ngFor="let admin of admins; let i = index">
           <td scope="row">{{admin.fullname}}</td>
           <td scope="row">{{admin.username}}</td>
           <td scope="row">{{admin.role}}</td>
           <td scope="row">
             <button class="btn btn-outline-success" data-toggle="modal" data-target="#viewAdmin"
               (click)="selectedAdmin = admin">View</button>
-            <button class="btn btn-outline-warning">Edit</button>
+            <button class="btn btn-outline-warning" data-toggle="modal" data-target="#editAdmin"
+              (click)="editAdmin(i)">Edit</button>
             <button class="btn btn-outline-danger" (click)="deleteAdmin(admin.id)">Delete</button>
+            <button class="btn btn-outline-dark" data-toggle="modal" data-target="#passwordModel"
+            (click)="selectedAdmin = admin">Change password</button>
           </td>
         </tr>
       </tbody>

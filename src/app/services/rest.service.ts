@@ -27,10 +27,22 @@ export class RestService {
     return this._http.post(this.url + '/admin/addadmin', data, { headers });
   }
 
+  updateAdmin(data: any) {
+    const headers = new HttpHeaders({})
+      .set('Authorization', 'Bearer ' + this._state.token);
+    return this._http.put(this.url + '/admin/updateadmin/' + data.id, data, { headers });
+  }
+
   deleteAdmin(id: number) {
     const headers = new HttpHeaders({})
       .set('Authorization', 'Bearer ' + this._state.token);
     return this._http.delete(this.url + '/admin/deleteadmin/' + id, { headers });
+  }
+
+  updatePassword(id : any, data: any) {
+    const headers = new HttpHeaders({})
+      .set('Authorization', 'Bearer ' + this._state.token);
+    return this._http.put(this.url + '/admin/updatepassword/' + id, data, { headers });
   }
 
 }
