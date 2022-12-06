@@ -26,6 +26,8 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { StudentsComponent } from './pages/students/students.component';
 import { BatchComponent } from './pages/batch/batch.component';
 import { ViewAdminComponent } from './pages/admin/view-admin/view-admin.component';
+import { ViewStudentComponent } from './pages/students/view-student/view-student.component';
+import { ViewBatchComponent } from './pages/batch/view-batch/view-batch.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { ViewAdminComponent } from './pages/admin/view-admin/view-admin.componen
     AdminComponent,
     StudentsComponent,
     BatchComponent,
-    ViewAdminComponent
+    ViewAdminComponent,
+    ViewStudentComponent,
+    ViewBatchComponent
   ],
   imports: [
     BrowserModule,
