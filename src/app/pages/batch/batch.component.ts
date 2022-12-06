@@ -9,7 +9,7 @@ import { RestService } from 'src/app/services/rest.service';
 
 export class BatchComponent {
   batches : any[] = [];
-  
+  selectedbatch : any = null;
   constructor(private _rest : RestService){
 
   }
