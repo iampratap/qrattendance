@@ -11,10 +11,6 @@ import { RestService } from 'src/app/services/rest.service';
 })
 export class BatchComponent  implements OnInit {
 
-
-
-
-
   batchs: any[] = [];
   batchForm: FormGroup;
   // editbatchForm: FormGroup;
