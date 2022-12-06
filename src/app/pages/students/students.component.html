@@ -1,1 +1,96 @@
-<p>students works!</p>
+<br>
+<div class="container">
+    <!-- Add students -->
+    <h2><b>Students Section</b>
+        <button type="button" style="float: right" class="btn btn-sm btn-outline-primary" data-toggle="modal"
+          data-target="#addstudentModel"> <i class="fa fa-plus"></i> Add Student</button>
+      </h2>
+  <div class="modal fade" id="addstudentModel">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Add New Student</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form [formGroup]="studentForm" (submit)="addstudent()">
+            <div class="modal-body">
+              <!-- batch_id, name ,email, mobile, parent_mobile,gender,address, dob,blood_group,img -->
+              <div class="form-group">
+                  <label for="batch_id">Batch id</label>
+                  <input type="number" class="form-control" id="batch_id" name="batch_id" formControlName="batch_id"
+                    placeholder="Enter Batch id">
+                </div>
+              <div class="form-group">
+                  <label for="fullname">Full Name</label>
+                  <input type="text" class="form-control" id="name" name="name" formControlName="name"
+                    placeholder="Enter Full Name">
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" id="email" name="email" formControlName="email"
+                    placeholder="Enter Email">
+                </div>
+                
+                <div class="form-group">
+                  <label for="mobile">Mobile</label>
+                  <input type="tel" class="form-control" id="mobile" name="mobile" formControlName="mobile"
+                    placeholder="Enter Mobile">
+                </div>
+  
+                <div class="form-group">
+                  <label for="parent_mobile">Parent Mobile</label>
+                  <input type="tel" class="form-control" id="parent_mobile" name="parent_mobile" formControlName="parent_mobile"
+                    placeholder="Enter Mobile">
+                </div>
+  
+                <div class="form-group">
+                  <label for="gender">Gender</label>
+                  <select class="form-control" id="gender" name="gender" formControlName="gender">
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                  </select>
+                </div>
+  
+                <div class="form-group">
+                  <label for="address">Address</label>
+                  <textarea name="" id="" cols="30" rows="10" class="form-control" id="address" name="address"
+                    formControlName="address" placeholder="Enter Address"></textarea>
+                </div>
+              <div class="form-group">
+                <label for="dob">DOB</label>
+                <input type="date" class="form-control" id="dob" name="dob" formControlName="dob"
+                  placeholder="Enter Birth Date">
+              </div>
+  
+              <div class="form-group">
+                <label for="blood_group">Blood Group</label>
+                <select class="form-control" id="blood_group" name="blood_group" formControlName="blood_group">              
+                <option value="A Positive">A Positive</option>
+                <option value="A Negative">A Negative</option>
+                <option value="B Positive">B Positive</option>
+                <option value="B Negative">B Negative</option>
+                <option value="AB Positive">AB Positive</option>
+                <option value="AB Negative">AB Negative</option>
+                <option value="O Positive">O Positive</option>
+                <option value="O Negative">O Negative</option>
+                <option value="Unknown">Unknown</option>
+            </select>
+          </div>
+              <div class="form-group">
+                <label for="img">Image Url</label>
+                <input type="text" class="form-control" id="img" name="img" formControlName="img">
+              </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+ <br>
+</div>
+

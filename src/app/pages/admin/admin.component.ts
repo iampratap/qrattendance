@@ -59,7 +59,18 @@ export class AdminComponent implements OnInit {
       this._rest.addAdmin(this.adminForm.value).subscribe((data: any) => {
         console.log(data);
         this.admins.push(data.data);
+        this._toastr.success(data.message);
+        this.ngOnInit();
+      },
+      
+       (error: any) => {
+        console.log(error);
+        this._toastr.error(error.error.message);
       });
+
+
+
+    
     }
   }
 
