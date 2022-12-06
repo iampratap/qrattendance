@@ -6,6 +6,9 @@ import { StateService } from './state.service';
   providedIn: 'root'
 })
 export class RestService {
+  getBatch() {
+    throw new Error('Method not implemented.');
+  }
 
   url = 'http://localhost:3000';
 
@@ -43,6 +46,12 @@ export class RestService {
     const headers = new HttpHeaders({})
       .set('Authorization', 'Bearer ' + this._state.token);
     return this._http.put(this.url + '/admin/updatepassword/' + id, data, { headers });
+  }
+
+  addbatch(data: any) {
+    const headers = new HttpHeaders({})
+      .set('Authorization', 'Bearer ' + this._state.token);
+    return this._http.post(this.url + '/batch/addbatch', data, { headers });
   }
 
 }
