@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { Component } from '@angular/core';
-=======
 import { Component, OnInit } from '@angular/core';
->>>>>>> 4cfb5d0fd1c4cc7f1d4316bfa8f3c794d9345867
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { RestService } from 'src/app/services/rest.service';
@@ -16,13 +12,9 @@ export class BatchComponent  implements OnInit {
 
   batchs: any[] = [];
   batchForm: FormGroup;
-<<<<<<< HEAD
-
-=======
   // editbatchForm: FormGroup;
   // passwordForm: FormGroup;
   // selectedbatch: any = null;
->>>>>>> 4cfb5d0fd1c4cc7f1d4316bfa8f3c794d9345867
 
   constructor(private _rest: RestService, private _toastr: ToastrService) {
     this.batchForm = new FormGroup({
@@ -57,11 +49,5 @@ export class BatchComponent  implements OnInit {
       }
       );
     }
-<<<<<<< HEAD
   }
-
-
-=======
-  }  
->>>>>>> 4cfb5d0fd1c4cc7f1d4316bfa8f3c794d9345867
 }
