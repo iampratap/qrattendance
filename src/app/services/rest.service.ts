@@ -45,4 +45,29 @@ export class RestService {
     return this._http.put(this.url + '/admin/updatepassword/' + id, data, { headers });
   }
 
+  addstudent(data: any) {
+    const headers = new HttpHeaders({})
+      .set('Authorization', 'Bearer ' + this._state.token);
+    return this._http.post(this.url + '/student/addstudent', data, { headers });
+  }
+
+  getstudent() {
+    const headers = new HttpHeaders({})
+      .set('Authorization', 'Bearer ' + this._state.token);
+    return this._http.get(this.url + '/student/getallstudents', { headers });
+  }
+
+  updatestudent(data: any) {
+    const headers = new HttpHeaders({})
+      .set('Authorization', 'Bearer ' + this._state.token);
+    return this._http.put(this.url + '/student/updatestudent/' + data.id, data, { headers });
+  }
+
+  deletestudent(id: number) {
+    const headers = new HttpHeaders({})
+      .set('Authorization', 'Bearer ' + this._state.token);
+    return this._http.delete(this.url + '/student/deletestudent/' + id, { headers });
+  }
+
+
 }
