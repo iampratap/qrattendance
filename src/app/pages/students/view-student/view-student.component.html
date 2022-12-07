@@ -1,1 +1,15 @@
-<p>view-student works!</p>
+<div *ngIf="student">
+    <label for="img">
+        <img [src]="student.img" alt="student image" class="img-fluid" width="100">
+      </label><br>
+    <label for="id">Id </label> : {{student.id}} <br>
+    <label for="batch_id">Batch Id </label> : {{student.batch_id}} <br> 
+    <label for="name">Name </label> : {{student.name}} <br>
+    <label for="email">Email</label> : {{student.email}} <br>
+    <label for="mobile">Mobile</label> : {{student.mobile}} <br>
+    <label for="parent_mobile">Parent Mobile</label> : {{student.parent_mobile}} <br>
+    <label for="gender">Gender</label> : {{student.gender}} <br>
+    <label for="address">Address</label> : {{student.address}} <br>
+    <label for="dob">dob</label> : {{student.dob}} <br>
+    <label for="blood_group">Blood Group</label> : {{student.blood_group}} <br>
+  </div>

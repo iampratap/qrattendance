@@ -5,6 +5,7 @@ import { StateService } from './state.service';
 @Injectable({
   providedIn: 'root'
 })
+
 export class RestService {
 
   url = 'http://localhost:3000';
@@ -44,5 +45,34 @@ export class RestService {
       .set('Authorization', 'Bearer ' + this._state.token);
     return this._http.put(this.url + '/admin/updatepassword/' + id, data, { headers });
   }
+
+    // student api start
+  
+    getallstudents() {
+      const headers = new HttpHeaders({})
+        .set('Authorization', 'Bearer ' + this._state.token);
+      return this._http.get(this.url + '/student/getallstudents', { headers });
+    }  
+  
+    addstudent(data: any) {
+      const headers = new HttpHeaders({})
+        .set('Authorization', 'Bearer ' + this._state.token);
+      return this._http.post(this.url + '/student/addstudent', data, { headers });
+    }
+  
+    updatestudent(data: any) {
+      const headers = new HttpHeaders({})
+        .set('Authorization', 'Bearer ' + this._state.token);
+      return this._http.put(this.url + '/student/updatestudent' + data.student_id, data, { headers });
+    }
+  
+    deletestudent(id: number) {
+      console.log(id);
+      const headers = new HttpHeaders({})
+        .set('Authorization', 'Bearer ' + this._state.token);
+      return this._http.delete(this.url + '/student/deletestudent/' + id, { headers });
+    }
+  
+    // student api end
 
 }
