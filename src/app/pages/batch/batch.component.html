@@ -1,1 +1,73 @@
-<p>batch works!</p>
+<div class="contain">
+    <h2>
+        Batch Details:
+ 
+         <button
+           type="button"
+           style="float: right"
+           class="btn btn-info btn-sm btn-primary"
+           data-toggle="modal"
+           data-target="#modal-info">
+           <i class="fas fa-plus"></i> Add student
+         </button>
+       </h2>
+
+          <!-- //Table fields -->
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+            <th scope="col">Batch Id </th>
+          <th scope="col">Batch Name</th>
+          <th scope="col">Batch time</th>
+            <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let batch of batches">
+            <td scope="row">{{ batch.batch_id }}</td>
+          <td scope="row">{{ batch.batch_name}}</td>
+          <td scope="row">{{ batch.batch_time }}</td>
+         
+          <td scope="row">
+            <button class="btn btn-outline-success" data-toggle="modal" data-target="#viewbatch"
+              (click)="selectedbatch = batch">View</button>
+            <button
+              class="btn btn-outline-warning">
+              Edit
+            </button>
+            <button
+              class="btn btn-outline-danger">
+              Delete
+            </button>
+           
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+    <!-- //modal for view batch details -->
+    <div class="modal fade" id="viewbatch">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Batch Details:</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <app-view-batch [batch]="selectedbatch"></app-view-batch>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+</div>
+

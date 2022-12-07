@@ -5,7 +5,9 @@ import { StateService } from './state.service';
 @Injectable({
   providedIn: 'root'
 })
+
 export class RestService {
+ 
 
   url = 'http://localhost:3000';
 
@@ -43,6 +45,12 @@ export class RestService {
     const headers = new HttpHeaders({})
       .set('Authorization', 'Bearer ' + this._state.token);
     return this._http.put(this.url + '/admin/updatepassword/' + id, data, { headers });
+  }
+
+  getAllBatches(){
+    const headers = new HttpHeaders({})
+    .set('Authorization', 'Bearer ' + this._state.token);
+    return this._http.get(this.url + '/batch/getallbatches', {headers});
   }
 
 }
