@@ -15,6 +15,13 @@ export class RestService {
 
   constructor(private _http: HttpClient, private _state: StateService) { }
 
+  addAttendance(data : any){
+    const headers = new HttpHeaders({})
+      .set('Authorization', 'Bearer ' + this._state.token);
+    return this._http.post(this.url + '/attendance/addattendance', data, { headers });    
+  }
+
+
   login(data: any) {
     return this._http.post(this.url + '/admin/login', data);
   }
@@ -43,46 +50,49 @@ export class RestService {
     return this._http.delete(this.url + '/admin/deleteadmin/' + id, { headers });
   }
 
-  updatePassword(id : any, data: any) {
+  updatePassword(id: any, data: any) {
     const headers = new HttpHeaders({})
       .set('Authorization', 'Bearer ' + this._state.token);
     return this._http.put(this.url + '/admin/updatepassword/' + id, data, { headers });
   }
 
-    // student api start
-  
-    getallstudents() {
-      const headers = new HttpHeaders({})
-        .set('Authorization', 'Bearer ' + this._state.token);
-      return this._http.get(this.url + '/student/getallstudents', { headers });
-    }  
-  
-    addstudent(data: any) {
-      const headers = new HttpHeaders({})
-        .set('Authorization', 'Bearer ' + this._state.token);
-      return this._http.post(this.url + '/student/addstudent', data, { headers });
-    }
-  
-    updatestudent(data: any) {
-      const headers = new HttpHeaders({})
-        .set('Authorization', 'Bearer ' + this._state.token);
-      return this._http.put(this.url + '/student/updatestudent' + data.student_id, data, { headers });
-    }
-  
-    deletestudent(id: number) {
-      console.log(id);
-      const headers = new HttpHeaders({})
-        .set('Authorization', 'Bearer ' + this._state.token);
-      return this._http.delete(this.url + '/student/deletestudent/' + id, { headers });
-    }
-  
-    // student api end
+  // student api start
 
-addbatch(data: any) {
+  getallstudents() {
+    const headers = new HttpHeaders({})
+      .set('Authorization', 'Bearer ' + this._state.token);
+    return this._http.get(this.url + '/student/getallstudents', { headers });
+  }
+
+  addstudent(data: any) {
+    const headers = new HttpHeaders({})
+      .set('Authorization', 'Bearer ' + this._state.token);
+    return this._http.post(this.url + '/student/addstudent', data, { headers });
+  }
+
+  updatestudent(data: any) {
+    const headers = new HttpHeaders({})
+      .set('Authorization', 'Bearer ' + this._state.token);
+    return this._http.put(this.url + '/student/updatestudent' + data.student_id, data, { headers });
+  }
+
+  deletestudent(id: number) {
+    console.log(id);
+    const headers = new HttpHeaders({})
+      .set('Authorization', 'Bearer ' + this._state.token);
+    return this._http.delete(this.url + '/student/deletestudent/' + id, { headers });
+  }
+
+  // student api end
+
+  addbatch(data: any) {
     const headers = new HttpHeaders({})
       .set('Authorization', 'Bearer ' + this._state.token);
     return this._http.post(this.url + '/batch/addbatch', data, { headers });
   }
+
+
+
 
 
 }

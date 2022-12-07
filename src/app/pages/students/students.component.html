@@ -4,7 +4,34 @@
         btn-outline-primary" data-toggle="modal"
         data-target="#addstudentModel"> <i class="fa fa-plus"></i> Add Student</button>
     </h2>
-  
+
+    <div class="modal fade" id="showqr">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Show QR Code</h4>
+            <button type="button" class="close" data-dismiss="modal"
+              aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+            <div class="modal-body">
+              <qrcode 
+              [qrdata]="qrdata" 
+              [width]="256"
+              [errorCorrectionLevel]="'M'">
+              </qrcode>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <!-- <button type="submit" class="btn btn-primary">Add</button> -->
+            </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+
   
     <div class="modal fade" id="addstudentModel">
       <div class="modal-dialog">
@@ -178,6 +205,8 @@
             <th scope="col">Student Id</th>
             <th scope="col">Batch Id</th>
             <th scope="col">Name</th>
+            <th scope="col">Action</th>
+
             <!-- <th scope="col">Email</th>
             <th scope="col">Mobile</th>
             <th scope="col">Parent Mobile</th>
@@ -206,6 +235,9 @@
   
   
             <td scope="row">
+              <button class="btn btn-outline-success" data-toggle="modal"
+                data-target="#showqr"
+                (click)="generateqrdata(student)">Show QR</button>
               <button class="btn btn-outline-success" data-toggle="modal"
                 data-target="#viewstudent"
                 (click)="selectedstudent= student">View</button>
