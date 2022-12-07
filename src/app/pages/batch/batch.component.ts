@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { RestService } from 'src/app/services/rest.service';
 
-
 @Component({
   selector: 'app-batch',
   templateUrl: './batch.component.html',
@@ -50,13 +49,5 @@ export class BatchComponent  implements OnInit {
       }
       );
     }
-  }
-
-
-
-
-
-
-
-
+  }  
 }

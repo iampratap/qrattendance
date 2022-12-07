@@ -5,6 +5,7 @@ import { StateService } from './state.service';
 @Injectable({
   providedIn: 'root'
 })
+
 export class RestService {
   getBatch() {
     throw new Error('Method not implemented.');
