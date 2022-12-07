@@ -6,6 +6,7 @@ import { BatchComponent } from './pages/batch/batch.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginComponent } from './pages/login/login.component';
 import { StudentsComponent } from './pages/students/students.component';
+import { ScannerComponent } from './scanner/scanner.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/app', pathMatch: 'full' },
@@ -15,6 +16,7 @@ const routes: Routes = [
     { path: 'admin', component: AdminComponent },
     { path: 'batch', component: BatchComponent },
     { path: 'student', component: StudentsComponent },
+    { path: 'attend', component: ScannerComponent },
     { path:'**', redirectTo: 'dashboard' }
   ] },
   { path: 'login', component: LoginComponent },

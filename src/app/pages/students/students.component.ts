@@ -8,10 +8,11 @@ import { RestService } from 'src/app/services/rest.service';
   templateUrl: './students.component.html',
   styleUrls: ['./students.component.css']
 })
-export class StudentsComponent implements OnInit{
+export class StudentsComponent implements OnInit {
 
+  qrdata = '';
   students: any[] = [];
-  studentForm: FormGroup ;
+  studentForm: FormGroup;
   editstudentForm: FormGroup;
   selectedstudent: any = null;
 
@@ -25,13 +26,13 @@ export class StudentsComponent implements OnInit{
       gender: new FormControl('', [Validators.required]),
       address: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]),
       dob: new FormControl('', [Validators.required]),
-      blood_group: new FormControl('', [Validators.required]),   
+      blood_group: new FormControl('', [Validators.required]),
       img: new FormControl('', [Validators.required]),
       is_active: new FormControl('1', [Validators.required]),
     });
 
     this.editstudentForm = new FormGroup({
-       batch_id: new FormControl(),
+      batch_id: new FormControl(),
       name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
       email: new FormControl('', [Validators.required, Validators.email]),
       mobile: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(100)]),
@@ -39,16 +40,16 @@ export class StudentsComponent implements OnInit{
       gender: new FormControl('', [Validators.required, Validators.email]),
       address: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]),
       dob: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(100)]),
-      blood_group: new FormControl('', [Validators.required]),   
+      blood_group: new FormControl('', [Validators.required]),
       img: new FormControl('', [Validators.required]),
       is_active: new FormControl('1', [Validators.required]),
     });
 
   }
- 
+
   ngOnInit(): void {
     this._rest.getallstudents().subscribe((data: any) => {
-      console.log(51,data);
+      console.log(51, data);
       this.students = data.data;
     });
   }
@@ -61,7 +62,7 @@ export class StudentsComponent implements OnInit{
         this.students.push(data.data);
       });
     }
-    else{
+    else {
       alert('invalid data')
     }
   }
@@ -108,6 +109,11 @@ export class StudentsComponent implements OnInit{
         this._toastr.error(error.error.message);
       });
     }
+  }
+
+  generateqrdata(student: any) {
+    console.log(student);
+    this.qrdata = JSON.stringify({ student_id: student.id, batch_id: student.batch_id });
   }
 
 }
