@@ -1,1 +1,276 @@
-<p>students works!</p>
+<div class="container">
+    <h2>Students
+      <button type="button" style="float: right" class="btn btn-sm
+        btn-outline-primary" data-toggle="modal"
+        data-target="#addstudentModel"> <i class="fa fa-plus"></i> Add Student</button>
+    </h2>
+
+    <div class="modal fade" id="showqr">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Show QR Code</h4>
+            <button type="button" class="close" data-dismiss="modal"
+              aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+            <div class="modal-body">
+              <qrcode 
+              [qrdata]="qrdata" 
+              [width]="256"
+              [errorCorrectionLevel]="'M'">
+              </qrcode>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <!-- <button type="submit" class="btn btn-primary">Add</button> -->
+            </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+
+  
+    <div class="modal fade" id="addstudentModel">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Add Students</h4>
+            <button type="button" class="close" data-dismiss="modal"
+              aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form [formGroup]="studentForm" (submit)="addstudent()">
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="batch_id">Batch Id</label>
+                <input type="text" class="form-control" id="batch_id" name="batch_id" formControlName="batch_id"
+                placeholder="Enter batch_id">
+              
+              </div>
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name"
+                  name="name" formControlName="name"
+                  placeholder="Enter Name">
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email"
+                  name="password" formControlName="email"
+                  placeholder="Enter Email">
+              </div>
+              <div class="form-group">
+                <label for="mobile">Mobile</label>
+                <input type="text" class="form-control" id="mobile"
+                  name="mobile" formControlName="mobile"
+                  placeholder="Enter Mobile">
+              </div>
+              <div class="form-group">
+                <label for="parent_mobile">Parent Mobile</label>
+                <input type="text" class="form-control" id="parent_mobile" name="parent_mobile"
+                  formControlName="parent_mobile"
+                  placeholder="Enter Parent Mobile">
+              </div>
+              <div class="form-group">
+                <label for="gender">Gender</label>
+                  <select class="form-control" id="gender" name="gender" formControlName="gender">
+                    <option value="male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+              </div>
+              <div class="form-group">
+                <label for="address">Address</label>
+                <textarea name="" id="" cols="30" rows="10" class="form-control"
+                  id="address" name="address"
+                  formControlName="address" placeholder="Enter Address"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="dob">DOB</label>
+                <input type="text" class="form-control" id="dob" name="dob"
+                  formControlName="dob">
+              </div>
+              <div class="form-group">
+                <label for="blood_group">Blood Group</label>
+                <input type="text" class="form-control" id="blood_group" name="blood_group"
+                  formControlName="blood_group">
+              </div>
+              <div class="form-group">
+                <label for="img">Image</label>
+                <input type="text" class="form-control" id="img" name="img"
+                  formControlName="img">
+              </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+          </form>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+  
+    <div class="modal fade" id="editstudent">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Edit Students</h4>
+            <button type="button" class="close" data-dismiss="modal"
+              aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+  
+          <form [formGroup]="editstudentForm" (submit)="updatestudent()">
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="batch_id">Batch Id</label>
+                <input type="text" class="form-control" id="batch_id" name="batch_id" formControlName="batch_id"
+                placeholder="Enter batch_id">
+              
+              </div>
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name"
+                  name="name" formControlName="name"
+                  placeholder="Enter Name">
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email"
+                  name="email" formControlName="email"
+                  placeholder="Enter Email">
+              </div>
+              <div class="form-group">
+                <label for="mobile">Mobile</label>
+                <input type="text" class="form-control" id="mobile"
+                  name="mobile" formControlName="mobile"
+                  placeholder="Enter Mobile">
+              </div>
+              <div class="form-group">
+                <label for="parent_mobile">Parent Mobile</label>
+                <input type="text" class="form-control" id="parent_mobile" name="parent_mobile"
+                  formControlName="parent_mobile"
+                  placeholder="Enter Parent Mobile">
+              </div>
+              <div class="form-group">
+                <label for="gender">Gender</label>
+                  <select class="form-control" id="gender" name="gender" formControlName="gender">
+                    <option value="male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+              </div>
+              <div class="form-group">
+                <label for="address">Address</label>
+                <textarea name="" id="" cols="30" rows="10" class="form-control"
+                  id="address" name="address"
+                  formControlName="address" placeholder="Enter Address"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="dob">DOB</label>
+                <input type="text" class="form-control" id="dob" name="dob"
+                  formControlName="dob">
+              </div>
+              <div class="form-group">
+                <label for="blood_group ">Blood Group</label>
+                <input type="text" class="form-control" id="blood_group" name="blood_group"
+                  formControlName="blood_group">
+              </div>
+              <div class="form-group">
+                <label for="img">Image</label>
+                <input type="text" class="form-control" id="img" name="img"
+                  formControlName="img">
+              </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+          </form>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div> 
+  
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Student Id</th>
+            <th scope="col">Batch Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Action</th>
+
+            <!-- <th scope="col">Email</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">Parent Mobile</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Address</th>
+            <th scope="col">Dob</th>
+            <th scope="col">Blood Group</th>
+            <th scope="col">Image</th> -->
+  
+          </tr>
+        </thead>
+        <tbody>
+          <!-- {{students |json}} -->
+          <tr *ngFor="let student of students; let i= index">
+            <td scope="row">{{student.student_id}}</td>
+            <td scope="row">{{student.batch_id}}</td>
+            <td scope="row">{{student.name}}</td>
+            <!-- <td scope="row">{{student.email}}</td>
+            <td scope="row">{{student.mobile}}</td>
+            <td scope="row">{{student.parent_mobile}}</td>
+            <td scope="row">{{student.gender}}</td>
+            <td scope="row">{{student.address}}</td>
+            <td scope="row">{{student.dob}}</td>
+            <td scope="row">{{student.blood_group}}</td>
+            <td scope="row">{{student.img}}</td> -->
+  
+  
+            <td scope="row">
+              <button class="btn btn-outline-success" data-toggle="modal"
+                data-target="#showqr"
+                (click)="generateqrdata(student)">Show QR</button>
+              <button class="btn btn-outline-success" data-toggle="modal"
+                data-target="#viewstudent"
+                (click)="selectedstudent= student">View</button>
+              <button class="btn btn-outline-warning" data-toggle="modal"
+                data-target="#editstudent"
+                (click)="editstudent(student.student_id)">Edit</button>
+              <button class="btn btn-outline-danger"
+                (click)="deletestudent(student.student_id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="modal fade" id="viewstudent">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">View student</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <app-view-student [student]="selectedstudent"></app-view-student>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+  
+  </div>
